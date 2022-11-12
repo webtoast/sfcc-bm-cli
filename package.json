@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "yargs": "^17.6.2"
+    "yargs": "^17.6.2",
+    "xml-js": "^1.6.11"
   }
 }
