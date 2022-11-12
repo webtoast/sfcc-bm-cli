@@ -20,7 +20,7 @@ const options = yargs.usage(usage)
     alias: "a",
     type: "number",
     describe: "The age to search for in weeks",
-    demandOption: true
+    demandOption: false
 })
 .help(true)
 .argv;
