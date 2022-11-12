@@ -7,6 +7,9 @@ const fs = require('fs');
 const yargs = require('yargs');
 const convert = require('xml-js');
 
+// custom modules
+const filters = require('../lib/filters');
+
 const usage = "Usage dw -i <input file> -a <number>";
 
 const options = yargs.usage(usage)
@@ -38,5 +41,14 @@ console.log(inputFile);
 
 fs.readFile(inputFile, function(err, data) {
     const result = convert.xml2json(data, {compact: true, spaces: 4});
-    fs.writeFileSync('data/congs.json', result, 'utf8');
+    runAudits(JSON.parse(result));
+    // fs.writeFileSync('data/congs.json', result, 'utf8');
 });
+
+function runAudits(json) {
+    const slots = json['slot-configurations']['slot-configuration']
+    const filteredConfigs = filters.oldConfigs(slots, age);
+    json['slot-configurations']['slot-configuration'] = filteredConfigs;
+    let result = convert.js2xml(json, {compact: true, spaces: 4});
+    fs.writeFileSync(`data/configs.xml`, result, 'utf8');
+}
