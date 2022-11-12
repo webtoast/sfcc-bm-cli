@@ -20,3 +20,13 @@ const options = yargs.usage(usage)
 })
 .help(true)
 .argv;
+
+const argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+
+if (argv.input === undefined && argv.i === undefined) {
+    yargs.showHelp();
+    return;
+}
+
+const inputFile = argv.i || argv.input;
+console.log(inputFile);
