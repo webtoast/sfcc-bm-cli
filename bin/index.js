@@ -33,6 +33,7 @@ if (argv.input === undefined && argv.i === undefined) {
 }
 
 const inputFile = argv.i || argv.input;
+const age = argv.a || argv.age || 52;
 console.log(inputFile);
 
 fs.readFile(inputFile, function(err, data) {
