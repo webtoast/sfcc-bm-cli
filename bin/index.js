@@ -1,7 +1,11 @@
 #! /usr/bin/env node
 
+// core modules
+const fs = require('fs');
+
 // public modules
 const yargs = require('yargs');
+const convert = require('xml-js');
 
 const usage = "Usage dw -i <input file> -a <number>";
 
@@ -30,3 +34,8 @@ if (argv.input === undefined && argv.i === undefined) {
 
 const inputFile = argv.i || argv.input;
 console.log(inputFile);
+
+fs.readFile(inputFile, function(err, data) {
+    const result = convert.xml2json(data, {compact: true, spaces: 4});
+    fs.writeFileSync('data/congs.json', result, 'utf8');
+});
