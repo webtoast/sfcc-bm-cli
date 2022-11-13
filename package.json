@@ -1,5 +1,5 @@
 {
-  "name": "dw-cli",
+  "name": "sfcc-bm-cli",
   "version": "0.0.1",
   "description": "",
   "main": "bin/index.js",
