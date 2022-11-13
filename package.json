@@ -4,7 +4,7 @@
   "description": "",
   "main": "bin/index.js",
   "bin": {
-    "dw": "./bin/index.js"
+    "sfcc-bm": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
