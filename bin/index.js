@@ -37,12 +37,10 @@ if (argv.input === undefined && argv.i === undefined) {
 
 const inputFile = argv.i || argv.input;
 const age = argv.a || argv.age || 52;
-console.log(inputFile);
 
 fs.readFile(inputFile, function(err, data) {
     const result = convert.xml2json(data, {compact: true, spaces: 4});
     runAudits(JSON.parse(result));
-    // fs.writeFileSync('data/congs.json', result, 'utf8');
 });
 
 function runAudits(json) {
