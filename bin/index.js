@@ -37,6 +37,7 @@ if (argv.input === undefined && argv.i === undefined) {
 
 const inputFile = argv.i || argv.input;
 const age = argv.a || argv.age || 52;
+const saveDir = inputFile.split('/').slice(0, -1).join('/');
 
 fs.readFile(inputFile, function(err, data) {
     const result = convert.xml2json(data, {compact: true, spaces: 4});
@@ -48,5 +49,5 @@ function runAudits(json) {
     const filteredConfigs = filters.oldConfigs(slots, age);
     json['slot-configurations']['slot-configuration'] = filteredConfigs;
     let result = convert.js2xml(json, {compact: true, spaces: 4});
-    fs.writeFileSync(`data/configs.xml`, result, 'utf8');
+    fs.writeFileSync(`${saveDir}/configs.xml`, result, 'utf8');
 }
